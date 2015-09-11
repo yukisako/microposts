@@ -1,10 +1,9 @@
 <h1>
-
 	<%= gravatar_for @user %>
 
 	<%= @user.name %>
-
 </h1>
+
 
 <div class="container">
   <div class="table-responsive">
@@ -26,6 +25,13 @@
           <th>年齢</th>
           <td><%=@user.age%></td>
         </tr>
+        <tr>
+          <th>一言</th>
+          <td><%=@user.phrase%></td>
+        </tr>
     </tbody>
   </table>
+  <center>
+    <a class="btn btn-default btn-md" href="<%=edit_user_path%>">プロフィールの編集画面へ</a>
+  </center>
 </div>
