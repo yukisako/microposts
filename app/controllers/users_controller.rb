@@ -18,6 +18,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    if @user.update(user_params)
+      redirect_to root_path, notice: 'プロフィールを更新しました'
+    else
+      render 'edit'
+    end
+  end
+
+  def edit
+
+  end
+
   private
 
   def user_params

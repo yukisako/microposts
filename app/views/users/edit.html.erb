@@ -1,0 +1,21 @@
+<h1>Edit</h1>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+<%= form_for(@user) do |f| %>
+名前:
+<%= f.text_field :name, :size => "20x1"%>
+<br>
+<br>
+年齢:
+<%= f.number_field :age %>
+<br>
+<br>
+内容:
+<br>
+<%= f.text_area :body, :size => "30x2"%>
+<br>
+<%= f.submit class: "btn btn-sm btn-primary" %>
+
+<% end %>
+	</div>
+</div>

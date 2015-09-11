@@ -5,3 +5,27 @@
 	<%= @user.name %>
 
 </h1>
+
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th>登録番号</th>
+          <td><%=@user.id%></td>
+        </tr>
+        <tr>
+          <th>名前</th>
+          <td><%=@user.name%></td>
+        </tr>
+         <tr>
+          <th>メールアドレス</th>
+          <td><%=@user.email%></td>
+        </tr>
+        <tr>
+          <th>年齢</th>
+          <td><%=@user.age%></td>
+        </tr>
+    </tbody>
+  </table>
+</div>
