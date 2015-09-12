@@ -11,4 +11,5 @@ class User < ActiveRecord::Base
   #websiteは,httpから始まるものとする
   VALID_WEBSITE_REGEX = /\Ahttp/
   validates :website, presence:false, on: :update, format: {with: VALID_WEBSITE_REGEX}
+  has_many :microposts
 end
