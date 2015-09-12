@@ -8,4 +8,7 @@ class User < ActiveRecord::Base
   validates :age, presence:false,numericality: {only_integer:true, greater_than_or_equal_to: 0,less_than: 100}, on: :update
   #一言は入力任意、2文字以上100文字以内とする
   validates :phrase, presence:false, length:{ maximum:100, minimum:0}, on: :update
+  #websiteは,httpから始まるものとする
+  VALID_WEBSITE_REGEX = /\Ahttp/
+  validates :website, presence:false, on: :update, format: {with: VALID_WEBSITE_REGEX}
 end
