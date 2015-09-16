@@ -13,11 +13,10 @@ class User < ActiveRecord::Base
   validates :website, presence:false, on: :update, format: {with: VALID_WEBSITE_REGEX}
   has_many :microposts
 
-  has_many :following_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :following_relationships, class_name:  "Relationship", foreign_key: "follower_id", dependent:   :destroy
   has_many :following_users, through: :following_relationships, source: :followed
-  has_many :follower_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :follower_relationships, class_name:  "Relationship", foreign_key: "followed_id", dependent:   :destroy
   has_many :follower_users, through: :follower_relationships, source: :follower
-
 
   #他のユーザをフォローする
   def follow(other_user)
