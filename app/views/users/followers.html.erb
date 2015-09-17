@@ -1,8 +1,8 @@
 <div class="row">
 <%= render 'aside' %>
   <div class="col-md-8">
-  	<div class="followings-list">
-  	  <h2>Following List</h2>
+  	<div class="follower-list">
+  	  <h2>Follower List</h2>
         <% @followers.each do |user| %>
         <ul style="font-size: 30px">
           <%= link_to gravatar_for(user, size: 50), user %>
