@@ -11,7 +11,11 @@ Rails.application.routes.draw do
       get :followers
     end
   end
+
+  resources :favorite_tweets, only: [:new, :create, :destroy, :show]
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts
   resources :relationships, only: [:create, :destroy]
+
 end
+

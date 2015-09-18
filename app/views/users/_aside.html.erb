@@ -5,10 +5,12 @@
 
         
 id: <%= @user.name %>
-      <br><br>
+    </h1>  
       <%= link_to "Following List", followings_user_path %>
       <br>
       <%= link_to "Follower List", followers_user_path %>
-    </h1>      
+      <br>
+      <%= link_to "Favorite Tweets", favorite_tweets_path %>
+    
     </section>
   </aside>
