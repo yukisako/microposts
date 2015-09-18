@@ -12,9 +12,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :favorite_tweets, only: [:new, :create, :destroy, :show]
+  resources :microposts do
+    member do
+      get :favorite_tweets
+    end
+  end
+
   resources :sessions, only: [:new, :create, :destroy]
-  resources :microposts
+
   resources :relationships, only: [:create, :destroy]
 
 end
