@@ -8,26 +8,25 @@
 	<% end %>
 	<% if current_user.favorite?(micropost) %>
 		<%= form_for(current_user.favorite_relationships.find_by(micropost.id), html: {method: :delete}) do |f| %>
-
-		<%#= current_user.favorite_relationships.inspect %>
-<div>
-	<%= hidden_field_tag :favorite, micropost.id %>
-	<%= hidden_field_tag :user_id, micropost.user_id %>
-</div>
-
-<%= f.submit "No-Favorite", class: "btn" %>
-	<% end %>
+	
+			<%#= current_user.favorite_relationships.inspect %>
+			<div>
+				<%= hidden_field_tag :favorite, micropost.id %>
+				<%= hidden_field_tag :user_id, micropost.user_id %>
+			</div>
+	
+			<%= f.submit "No-Favorite", class: "btn" %>
+		<% end %>
 	<% else %>
 		<%= form_for(current_user.favorite_relationships.build ) do |f| %>
 		<%#= current_user.favorite_relationships.inspect %>
-<div>
-	<%= hidden_field_tag :favorite, micropost.id %>
-	<%= hidden_field_tag :user_id, micropost.user_id %>
-</div>
+		<div>
+			<%= hidden_field_tag :favorite, micropost.id %>
+			<%= hidden_field_tag :user_id, micropost.user_id %>
+		</div>
 
-<%= f.submit "Favorite", class: "btn btn-primary" %>
+		<%= f.submit "Favorite", class: "btn btn-primary" %>
 
 	<% end %>
 <% end %>
-	</span>
 </li>
