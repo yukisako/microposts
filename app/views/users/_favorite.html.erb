@@ -1,4 +1,0 @@
-<%= form_for(@tweet.favorite_relationships.build, remote: true) do |f| %>
-  <div><%= hidden_field_tag :tweet_id, @tweet.id %></div>
-  <%= f.submit "Follow", class: "btn btn-primary" %>
-<% end %>

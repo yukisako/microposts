@@ -29,8 +29,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @followers = @user.follower_users
   end
-
-
+  
+  def favorites
+    @user = User.find(params[:id])
+    @favorite = @user.favorite_users
+   # @favorite_items = current_user.favorite_items.order(created_at: :desc)
+  end
+  
+  def favorite_tweets
+    @post = Micropost.find(params[:id])
+    @favorite_tweets = @post.favorite_tweets
+  end
 
   def update
     @user = User.find(params[:id])

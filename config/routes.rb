@@ -7,19 +7,12 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      get :followings
-      get :followers
+      get :followings, :followers, :favorites
     end
   end
-
-  resources :microposts do
-    member do
-      get :favorite_tweets
-    end
-  end
-
+  resources :favorites, only: [:create, :destroy]
+  resources :microposts
   resources :sessions, only: [:new, :create, :destroy]
-
   resources :relationships, only: [:create, :destroy]
 
 end

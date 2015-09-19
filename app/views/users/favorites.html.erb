@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>Favorite List</h2>
+  <table class="table">
+        <thead>
+      <tr>
+        <th>名前</th>
+        <th>ツイート内容</th>
+        <th>投稿日時</th>
+      </tr>
+    </thead>
+
+  	 <% @favorite.each do |tweet| %>
+        <tr>
+        <td><%= User.find(tweet.user_id).name %></td>
+        <td><%= tweet.content %></td>
+        <td><%= tweet.updated_at %></td>
+      </tr>
+      <% end %>
+</div>

@@ -1,12 +1,16 @@
 class FavoritesController < ApplicationController
   def create
-    @tweet = User.find(params[:tweet_id])
+    @tweet = params[:favorite]
+    @user = params[:user_id]
     current_user.favorite(@tweet)
+    redirect_to user_path(@user)
   end
 
   def destroy
-    @tweet = current_user.following_relationships.find(params[:tweet_id]).followed
-    current_user.unfollow(@tweet)
+    @tweet = params[:favorite]
+    @user = params[:user_id]
+    current_user.back_favorite(@tweet)
+    redirect_to user_path(@user)
   end
-
+  
 end

@@ -17,8 +17,8 @@ class User < ActiveRecord::Base
   has_many :following_users, through: :following_relationships, source: :followed
   has_many :follower_relationships, class_name:  "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :follower_users, through: :follower_relationships, source: :follower
-  has_many :favorite_user_relationships, class_name: "Favorite", foreign_key: "fav_user_id", dependent: :destroy
-  has_many :follower_users, through: :favorite_user_relationships, source: :faborite_users
+  has_many :favorite_relationships, class_name: "Favorite", foreign_key: "fav_user_id", dependent: :destroy
+  has_many :favorite_users, through: :favorite_relationships, source: :fav_tweet
   #他のユーザをフォローする
   def follow(other_user)
     following_relationships.create(followed_id: other_user.id)
@@ -37,4 +37,20 @@ class User < ActiveRecord::Base
   def feed_items
     Micropost.where(user_id: following_user_ids + [self.id])
   end
+    #お気に入りに登録
+  def favorite(fav_tweet)
+    favorite_relationships.create(fav_tweet_id: fav_tweet)
+  end
+
+  #お気に入り解除
+  def back_favorite(fav_tweet)
+    favorite_relationships.find_by(fav_tweet_id: fav_tweet).destroy
+  end
+
+
+  #あるツイートをお気に入りに登録しているかどうか
+  def favorite?(fav_tweet)
+    favorite_users.include?(fav_tweet)
+  end
+  
 end
